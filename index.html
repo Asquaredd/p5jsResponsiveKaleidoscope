@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>kaleidoscope</title>
+
+    <script src="libraries/p5.js"></script>
+    <script src="libraries/p5.dom.js"></script>
+    <script src="libraries/p5.sound.js"></script>
+    <div id="navbar">
+        <div id="menu-toggle"></div>
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Menu Item 1</a></li>
+                <li><a href="#">Menu Item 2</a></li>
+                <li><a href="#">Menu Item 3</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f3f3;
+        }
+
+        #canvas-container {
+            margin-bottom: 45px; /* Add margin bottom for spacing */
+            position: relative;
+            width: 90vw;
+            height: vh; /* Adjust height as needed */
+            max-width: 600px; /* Set maximum width as per your preference */
+            max-height: 600px; /* Set maximum height as per your preference */
+			z-index: 0;
+        }
+
+        canvas {
+            display: block;
+			margin-bottom: 10px;
+		}
+
+        .savebtn,
+        .clrbtn,
+        .fullbtn,
+        .sliderbtn {
+			display: inline-block;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 5px 20px; /* Adjust the padding as needed */
+            margin: 5px; /* Adjust the margin as needed */
+        }
+		
+		@media screen and (max-width: 600px) {
+            #canvas-container {
+                width: 90vw;
+                height: 90vw;
+                max-width: 90%;
+                max-height: 90%;
+            }
+        }
+
+        /* Responsive styles for iPhones */
+        @media only screen and (max-width: 375px) {
+            #canvas-container {
+                width: 80%;
+                height: 80%;
+            }
+        }
+		
+		#navbar {
+			position: fixed;
+			top: 0;
+			right: -200px; /* Adjust the width of the navbar */
+			width: 200px; /* Adjust the width of the navbar */
+			height: 100vh;
+			background-color: #f3f3f3;
+			transition: right 0.3s ease-in-out;
+		}
+
+		#menu-toggle {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			width: 40px;
+			height: 40px;
+			cursor: pointer;
+			background-color: #333;
+		}
+
+		#menu-toggle::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 20px;
+			height: 2px;
+			background-color: #fff;
+		}
+
+		#menu {
+			padding: 20px;
+		}
+
+		#menu ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		#menu li {
+			margin-bottom: 10px;
+		}
+
+		#menu a {
+			display: block;
+			padding: 5px;
+			text-decoration: none;
+			color: #333;
+		}
+
+		#menu-toggle:checked ~ #navbar {
+			right: 0;
+		}
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <script src="sketch.js"></script>
+    </div>
+
+    <div id="button-container">
+        <!-- Buttons -->
+        <button class="savebtn">Save</button>
+        <button class="clrbtn" onclick="clearScreen()">Clear</button>
+        <button class="fullbtn" onclick="screenFull()">Full Screen</button>
+        <div>
+            Brush Size:
+            <input type="range" min="1" max="32" step="0.1" value="4" id="brushSizeSlider">
+        </div>
+    </div>
+
+    <div id="navbar">
+        <div id="menu-toggle"></div>
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Menu Item 1</a></li>
+                <li><a href="#">Menu Item 2</a></li>
+                <li><a href="#">Menu Item 3</a></li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>
